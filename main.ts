@@ -59,7 +59,8 @@ function drivebitbot (parameterName: string, parameterValue: number) {
         }
     }
     if (parameterName == "Grabber") {
-        bitbot.ledBrightness(Math.map(parameterValue, 0, 90, 0, 255))
+        bitbot.ledBrightness(Math.constrain(Math.map(parameterValue, 0, 90, 0, 255), 0, 255))
+        bitbot.ledShow()
     }
 }
 let RightOutput = 0
@@ -83,6 +84,7 @@ basic.showLeds(`
     # # # . .
     `)
 bitbot.select_model(BBModel.Classic)
+bitbot.ledBrightness(40)
 bitbot.ledRainbow()
 basic.forever(function () {
 	
