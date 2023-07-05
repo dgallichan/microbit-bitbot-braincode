@@ -58,6 +58,9 @@ function drivebitbot (parameterName: string, parameterValue: number) {
             bitbot.rotatems(BBRobotDirection.Left, topSpeed * 100, -1 * parameterValue)
         }
     }
+    if (parameterName == "Grabber") {
+        bitbot.ledBrightness(Math.map(parameterValue, 0, 90, 0, 255))
+    }
 }
 let RightOutput = 0
 let LeftOutput = 0
@@ -71,7 +74,7 @@ let MappedRoll = 0
 let RawRoll = 0
 let topSpeedAnalogue = 0
 let topSpeed = 0
-radio.setGroup(0)
+radio.setGroup(240)
 basic.showLeds(`
     # # # . .
     # . . # .
@@ -80,6 +83,7 @@ basic.showLeds(`
     # # # . .
     `)
 bitbot.select_model(BBModel.Classic)
+bitbot.ledRainbow()
 basic.forever(function () {
 	
 })
